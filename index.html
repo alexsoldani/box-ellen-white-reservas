@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Reserva — Box Ellen White</title>
+<style>
+  :root{
+    --ink:#241f1a; --muted:#7c6f63; --line:#e7ddcf; --paper:#fffdf9;
+    --bg:#f4ede3; --brand:#2f3640; --brand-2:#4a5361;
+    --amber:#c97b34; --amber-soft:#e7a96a; --cream:#f6ecdd; --brown:#7a5433;
+    --danger:#a8321f; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:radial-gradient(1200px 500px at 50% -220px,#fbf3e6 0%,rgba(251,243,230,0) 70%),var(--bg);
+    color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding:22px 16px 60px;
+  }
+  .wrap{max-width:700px;margin:0 auto}
+
+  header.hero{
+    position:relative;border-radius:var(--radius);overflow:hidden;background:#2f3640;
+    box-shadow:0 16px 40px rgba(48,38,28,.22);
+    display:grid;grid-template-columns:1.02fr .98fr;min-height:340px;
+  }
+  .hero-media{position:relative;overflow:hidden}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:52% 42%;display:block}
+  .hero-media::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(47,54,64,0) 38%,rgba(47,54,64,.96) 94%);}
+  .hero-copy{padding:26px 24px;display:flex;flex-direction:column;justify-content:center;color:#fff;z-index:2}
+  .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;font-weight:800;
+    color:var(--amber-soft);margin:0 0 10px}
+  h1{margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.2px}
+  .sub{color:#d9cfc2;font-size:13.5px;margin:8px 0 0}
+  .tagline{color:#e7a96a;font-size:12px;letter-spacing:.04em;font-style:italic}
+  .titles{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+  .titles li{font-size:11px;line-height:1.3;color:#f0e5d6;background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 9px}
+  .price{margin-top:16px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+  .price b{font-size:29px;letter-spacing:-.6px;color:#fff}
+  .price span{font-size:12.5px;color:#cfc3b4}
+  .chip{align-self:flex-start;margin-top:12px;background:var(--amber);color:#2b1a08;
+    padding:6px 12px;border-radius:999px;font-size:12px;font-weight:800}
+  @media (max-width:620px){
+    header.hero{grid-template-columns:1fr;min-height:0}
+    .hero-media{height:225px}
+    .hero-media::after{background:linear-gradient(180deg,rgba(47,54,64,0) 30%,rgba(47,54,64,.96) 96%)}
+    .hero-copy{padding:20px}
+    h1{font-size:22px}
+  }
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;margin-top:16px;box-shadow:0 2px 12px rgba(60,45,30,.05)}
+  .card h2{margin:0 0 4px;font-size:17px;letter-spacing:-.1px}
+  .sub2{margin:0 0 18px;color:var(--muted);font-size:13px}
+  .field{margin-bottom:15px}
+  label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#3b322a}
+  .hint{font-weight:400;color:var(--muted);font-size:11.5px;margin-left:6px}
+  input,select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:11px;
+    font:inherit;color:var(--ink);background:#fffefb;transition:border-color .15s,box-shadow .15s}
+  input:focus,select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(201,123,52,.15)}
+  input[aria-invalid="true"]{border-color:var(--danger);box-shadow:0 0 0 3px rgba(168,50,31,.10)}
+  .err{color:var(--danger);font-size:12.5px;margin-top:6px;display:none}
+  .err.show{display:block}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1 1 200px}
+  button{font:inherit;font-weight:750;cursor:pointer;border-radius:12px;border:1px solid transparent;
+    padding:14px 18px;transition:transform .08s ease,filter .15s}
+  button:active{transform:translateY(1px)}
+  .btn-primary{background:var(--brand);color:#fff;width:100%;margin-top:4px;font-size:16px}
+  .btn-primary:hover{filter:brightness(1.12)}
+  .btn-ghost{background:#fffefb;color:var(--brand);border-color:var(--line)}
+  .btn-ghost:hover{background:#faf5ec}
+  .lock{display:flex;gap:10px;align-items:flex-start;background:var(--cream);
+    border:1px solid #ead7bd;border-radius:11px;padding:12px 14px;margin:0 0 18px;
+    font-size:12.5px;color:#5e4526}
+  .lock b{color:var(--brown)}
+  .ok-banner{display:none;background:#eef7f1;border:1px solid #c3e2cf;color:#1c5a3d;
+    border-radius:12px;padding:16px 18px;margin-top:16px;font-size:14px}
+  .ok-banner.show{display:block}
+  .proto{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+  th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+  tfoot td{font-weight:800;border-bottom:none;padding-top:12px;color:var(--brown)}
+  .empty{color:var(--muted);font-size:13px;padding:8px 0}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .foot{color:var(--muted);font-size:11.5px;text-align:center;margin-top:22px;line-height:1.7}
+  .del{background:none;border:none;color:var(--danger);cursor:pointer;padding:2px 6px;font-size:13px}
+  .strip{display:flex;gap:6px;margin-top:14px;border-radius:10px;overflow:hidden;height:56px}
+  .strip img{flex:1;min-width:0;object-fit:cover;display:block}
+  @media print{
+    body{background:#fff;padding:0}
+    header.hero{box-shadow:none;border-radius:0}
+    .card{box-shadow:none;border-color:#ccc;break-inside:avoid}
+    button,.lock,.toolbar,#formCard,.strip{display:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-media">
+      <img src="img/hero.jpg" alt="Box Ellen White — capa com o rosto de Jesus em arte facetada">
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow">Reserva de material</p>
+      <h1>Box Ellen White</h1>
+      <p class="sub">Coleção de 4 livros · Ellen G. White<br><span class="tagline">Amar · Salvar · Retornar</span></p>
+      <ul class="titles">
+        <li>O Desejo de Todas as Nações</li>
+        <li>O Maior Discurso de Cristo</li>
+        <li>Parábolas de Jesus</li>
+        <li>Caminho a Cristo</li>
+      </ul>
+      <div class="price"><b>R$ 15,00</b><span>por família</span></div>
+      <div class="chip">1 box por família</div>
+    </div>
+  </header>
+
+  <section class="card" id="formCard">
+    <h2>Dados da reserva</h2>
+    <p class="sub2">Todos os campos são obrigatórios.</p>
+
+    <div class="lock">
+      <span>🔒</span>
+      <span><b>Limite:</b> 1 unidade por família — o CPF é a chave da família. Se já houver reserva com esse CPF, o formulário avisa.</span>
+    </div>
+
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="nome">Nome completo</label>
+        <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Ex.: Maria Souza Lima" required>
+        <div class="err" id="err-nome">Informe o nome completo (nome e sobrenome).</div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="cpf">CPF</label>
+          <input id="cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off"
+                 placeholder="000.000.000-00" maxlength="14" required>
+          <div class="err" id="err-cpf">CPF inválido — confira os números.</div>
+        </div>
+
+        <div class="field">
+          <label for="igreja">Igreja que pertence</label>
+          <select id="igreja" name="igreja" required>
+            <option value="" disabled selected>Selecione…</option>
+            <option>Itatiaia</option>
+            <option>Sarapuí</option>
+            <option>Dr. Laureano</option>
+            <option>Copacabana DC</option>
+          </select>
+          <div class="err" id="err-igreja">Escolha a igreja.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="fone">WhatsApp <span class="hint">opcional — ajuda no aviso da entrega</span></label>
+        <input id="fone" name="fone" type="tel" inputmode="tel" autocomplete="tel"
+               placeholder="(21) 90000-0000">
+      </div>
+
+      <button class="btn-primary" type="submit">Confirmar reserva</button>
+    </form>
+
+    <div class="ok-banner" id="okBanner">
+      <b>Reserva registrada ✓</b><br>
+      <span id="okTexto"></span><br>
+      <span class="proto">Protocolo: <b id="okProto"></b></span>
+    </div>
+
+    <div class="strip">
+      <img src="img/lomb1-crop.jpg" alt="Lombadas dos livros">
+      <img src="img/lomb2-crop.jpg" alt="Box visto de perfil">
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Reservas registradas <span class="hint" id="contador"></span></h2>
+    <p class="sub2">Lista deste dispositivo. Exporte o CSV para consolidar entre as igrejas.</p>
+    <div id="lista"></div>
+    <div class="toolbar">
+      <button class="btn-ghost" id="btnCsv" type="button">Baixar CSV</button>
+      <button class="btn-ghost" id="btnPrint" type="button">Imprimir / PDF</button>
+      <button class="btn-ghost" id="btnLimpar" type="button">Limpar tudo</button>
+    </div>
+  </section>
+
+  <p class="foot">
+    Box Ellen White · 4 livros · reserva de 1 unidade por família · valor R$ 15,00<br>
+    Em caso de dúvida, procure o responsável do seu distrito.
+  </p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var KEY = "box-ellen-white-reservas-v1";
+  var PRECO = 15;
+  // URL do Apps Script publicado (termina em /exec). Vazio = modo local (só este aparelho).
+  var ENDPOINT = "";
+
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $("form"), listaEl = $("lista"), okBanner = $("okBanner");
+
+  function load(){
+    try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch(e){ return []; }
+  }
+  function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+  function onlyDigits(s){ return (s || "").replace(/\D+/g, ""); }
+
+  function maskCpf(v){
+    var d = onlyDigits(v).slice(0, 11);
+    return d
+      .replace(/^(\d{3})(\d)/, "$1.$2")
+      .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+      .replace(/\.(\d{3})(\d{1,2})$/, ".$1-$2");
+  }
+
+  function cpfValido(v){
+    var c = onlyDigits(v);
+    if (c.length !== 11 || /^(\d)\1{10}$/.test(c)) return false;
+    var soma = 0, i, resto;
+    for (i = 0; i < 9; i++) soma += parseInt(c.charAt(i), 10) * (10 - i);
+    resto = (soma * 10) % 11;
+    if (resto === 10) resto = 0;
+    if (resto !== parseInt(c.charAt(9), 10)) return false;
+    soma = 0;
+    for (i = 0; i < 10; i++) soma += parseInt(c.charAt(i), 10) * (11 - i);
+    resto = (soma * 10) % 11;
+    if (resto === 10) resto = 0;
+    return resto === parseInt(c.charAt(10), 10);
+  }
+
+  function maskFone(v){
+    var d = onlyDigits(v).slice(0, 11);
+    if (d.length <= 10) return d.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{4})(\d{1,4})$/, "$1-$2");
+    return d.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d{1,4})$/, "$1-$2");
+  }
+
+  function setErr(id, on, msg){
+    var el = $(id);
+    if (!el) return;
+    if (msg) el.textContent = msg;
+    el.classList.toggle("show", !!on);
+  }
+
+  function protocolo(){
+    var d = new Date();
+    var stamp = String(d.getFullYear()).slice(2)
+      + String(d.getMonth() + 1).padStart(2, "0")
+      + String(d.getDate()).padStart(2, "0");
+    var seq = String(load().length + 1).padStart(3, "0");
+    return "EW" + stamp + "-" + seq;
+  }
+
+  function escapeHtml(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  function render(){
+    var arr = load();
+    $("contador").textContent = arr.length ? "(" + arr.length + ")" : "";
+    if (!arr.length){
+      listaEl.innerHTML = '<p class="empty">Nenhuma reserva ainda.</p>';
+      return;
+    }
+    var rows = arr.map(function(r, i){
+      return "<tr>"
+        + "<td>" + (i + 1) + "</td>"
+        + "<td>" + escapeHtml(r.nome) + "</td>"
+        + "<td>" + escapeHtml(r.igreja) + "</td>"
+        + "<td>" + escapeHtml(r.cpf) + "</td>"
+        + "<td>" + (r.fone ? escapeHtml(r.fone) : "—") + "</td>"
+        + '<td><button class="del" data-i="' + i + '" title="Remover">✕</button></td>'
+        + "</tr>";
+    }).join("");
+    listaEl.innerHTML =
+      "<table><thead><tr><th>#</th><th>Nome</th><th>Igreja</th><th>CPF</th><th>WhatsApp</th><th></th></tr></thead>"
+      + "<tbody>" + rows + "</tbody>"
+      + "<tfoot><tr><td colspan=\"4\">Total previsto</td><td colspan=\"2\">R$ "
+      + (arr.length * PRECO).toFixed(2).replace(".", ",") + "</td></tr></tfoot></table>";
+  }
+
+  $("cpf").addEventListener("input", function(e){
+    e.target.value = maskCpf(e.target.value);
+    setErr("err-cpf", false, "CPF inválido — confira os números.");
+  });
+  $("fone").addEventListener("input", function(e){ e.target.value = maskFone(e.target.value); });
+
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var nome = $("nome").value.trim().replace(/\s+/g, " ");
+    var cpf = $("cpf").value.trim();
+    var igreja = $("igreja").value;
+    var fone = $("fone").value.trim();
+
+    var nomeOk = nome.split(" ").filter(Boolean).length >= 2 && nome.length >= 5;
+    var cpfOk = cpfValido(cpf);
+    var igrejaOk = !!igreja;
+
+    setErr("err-nome", !nomeOk, "Informe o nome completo (nome e sobrenome).");
+    setErr("err-cpf", !cpfOk, "CPF inválido — confira os números.");
+    setErr("err-igreja", !igrejaOk, "Escolha a igreja.");
+    if (!(nomeOk && cpfOk && igrejaOk)) return;
+
+    var arr = load();
+    var dup = arr.some(function(r){ return onlyDigits(r.cpf) === onlyDigits(cpf); });
+    if (dup){
+      setErr("err-cpf", true, "Já existe uma reserva com este CPF (1 por família).");
+      $("cpf").setAttribute("aria-invalid", "true");
+      form.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    enviar({ nome: nome, cpf: cpf, igreja: igreja, fone: fone }, arr);
+  });
+
+  function concluir(dados, arr, proto, aviso){
+    arr.push({
+      nome: dados.nome, cpf: dados.cpf, igreja: dados.igreja, fone: dados.fone,
+      qtd: 1, valor: PRECO, proto: proto, ts: new Date().toISOString()
+    });
+    save(arr);
+    $("okTexto").textContent = dados.nome + " · " + dados.igreja + " · 1 box · R$ "
+      + PRECO.toFixed(2).replace(".", ",") + (aviso ? " · " + aviso : "");
+    $("okProto").textContent = proto;
+    okBanner.classList.add("show");
+    okBanner.scrollIntoView({ behavior: "smooth", block: "center" });
+    form.reset();
+    $("cpf").removeAttribute("aria-invalid");
+    setErr("err-cpf", false, "CPF inválido — confira os números.");
+    render();
+  }
+
+  function enviar(dados, arr){
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    var rotulo = btn.textContent;
+    btn.textContent = "Enviando…";
+
+    function restaurar(){ btn.disabled = false; btn.textContent = rotulo; }
+
+    if (!ENDPOINT){
+      restaurar();
+      concluir(dados, arr, protocolo(), "salvo neste aparelho");
+      return;
+    }
+
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(dados)
+    })
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        restaurar();
+        if (!j || !j.ok){
+          if (j && j.campo === "cpf"){
+            setErr("err-cpf", true, j.erro || "CPF já reservado.");
+            $("cpf").setAttribute("aria-invalid", "true");
+          } else {
+            alert((j && j.erro) || "Não foi possível registrar agora.");
+          }
+          return;
+        }
+        concluir(dados, arr, j.protocolo, "");
+      })
+      .catch(function(){
+        restaurar();
+        concluir(dados, arr, protocolo(),
+          "sem conexão — guardado aqui, exporte o CSV no fim");
+      });
+  }
+
+  listaEl.addEventListener("click", function(ev){
+    var btn = ev.target.closest(".del");
+    if (!btn) return;
+    if (!confirm("Remover esta reserva?")) return;
+    var arr = load();
+    arr.splice(Number(btn.dataset.i), 1);
+    save(arr);
+    render();
+  });
+
+  $("btnCsv").addEventListener("click", function(){
+    var arr = load();
+    if (!arr.length) return alert("Nenhuma reserva para exportar.");
+    var head = ["protocolo","nome","cpf","igreja","whatsapp","qtd","valor","data"];
+    var lines = [head.join(";")].concat(arr.map(function(r){
+      return [r.proto, r.nome, r.cpf, r.igreja, r.fone || "", r.qtd,
+              String(r.valor).replace(".", ","), r.ts].map(function(v){
+                return '"' + String(v).replace(/"/g, '""') + '"';
+              }).join(";");
+    }));
+    var blob = new Blob(["\ufeff" + lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "reservas-box-ellen-white.csv";
+    a.click();
+  });
+
+  $("btnPrint").addEventListener("click", function(){ window.print(); });
+
+  $("btnLimpar").addEventListener("click", function(){
+    if (!confirm("Apagar TODAS as reservas deste dispositivo? Exporte o CSV antes.")) return;
+    save([]); render(); okBanner.classList.remove("show");
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
